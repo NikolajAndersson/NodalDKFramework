@@ -1,0 +1,51 @@
+<div class="dead">
+<pre class="code">
+<span class="srcline"><span class="lineno"><a href="30,1" id="srcline1"> 1</a></span><span class="line"><span class="keyword">classdef</span> preampPlugin &lt; audioPlugin</span></span>
+<span class="srcline"><span class="lineno"><a href="30,2" id="srcline2"> 2</a></span><span class="line">    <span class="keyword">properties</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,3" id="srcline3"> 3</a></span><span class="line">        Gain = 0.5;</span></span>
+<span class="srcline"><span class="lineno"><a href="30,4" id="srcline4"> 4</a></span><span class="line">        Out = 0.5;</span></span>
+<span class="srcline"><span class="lineno"><a href="30,5" id="srcline5"> 5</a></span><span class="line">    <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,6" id="srcline6"> 6</a></span><span class="line">    <span class="keyword">properties</span> (Access=private)</span></span>
+<span class="srcline"><span class="lineno"><a href="30,7" id="srcline7"> 7</a></span><span class="line">        preamp</span></span>
+<span class="srcline"><span class="lineno"><a href="30,8" id="srcline8"> 8</a></span><span class="line">    <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,9" id="srcline9"> 9</a></span><span class="line">    <span class="keyword">properties</span> (Constant)</span></span>
+<span class="srcline"><span class="lineno"><a href="30,10" id="srcline10">10</a></span><span class="line">        PluginInterface = audioPluginInterface(<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,11" id="srcline11">11</a></span><span class="line">            audioPluginParameter(<span class="string">'Gain'</span>,<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,12" id="srcline12">12</a></span><span class="line">            <span class="string">'DisplayName'</span>,<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,13" id="srcline13">13</a></span><span class="line">            <span class="string">'Gain'</span>,<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,14" id="srcline14">14</a></span><span class="line">            <span class="string">'Mapping'</span>,{<span class="string">'lin'</span>,0,1},<span class="string">'Label'</span>,<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,15" id="srcline15">15</a></span><span class="line">            <span class="string">'%'</span>),<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,16" id="srcline16">16</a></span><span class="line">            audioPluginParameter(<span class="string">'Out'</span>,<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,17" id="srcline17">17</a></span><span class="line">            <span class="string">'DisplayName'</span>,<span class="keyword">...</span><span class="comment">.</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,18" id="srcline18">18</a></span><span class="line">        <span class="string">'Output'</span>,<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,19" id="srcline19">19</a></span><span class="line">            <span class="string">'Mapping'</span>,{<span class="string">'lin'</span>,0,1},<span class="string">'Label'</span>,<span class="string">'%'</span>));</span></span>
+<span class="srcline"><span class="lineno"><a href="30,20" id="srcline20">20</a></span><span class="line">    <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,21" id="srcline21">21</a></span><span class="line">    <span class="keyword">methods</span></span></span>
+</pre>
+</div>
+<pre class="code">
+<span class="srcline"><span class="lineno"><a href="30,22" id="srcline22">22</a></span><span class="line">        <span class="mxinfo " id="T35:U1"><span class="keyword">function</span> <span class="var type1" id="S10T35U57">plugin</span> = preampPlugin</span></span>
+<span class="srcline"><span class="lineno"><a href="30,23" id="srcline23">23</a></span><span class="line">            <span class="var type0" id="S10T0U63">plugin</span>.preamp = <span class="mxinfo " id="T37:U3"><span class="message error" id="M14F99C"><span class="fcn" id="F104N5:B66">preampModel</span>(<span class="mxinfo " id="T3:U4"><span class="var type1" id="S10T35U68">plugin</span>.getSampleRate</span>)</span></span>;</span></span>
+<span class="srcline"><span class="lineno"><a href="30,24" id="srcline24">24</a></span><span class="line">        <span class="keyword">end</span></span></span></span>
+</pre>
+<div class="dead">
+<pre class="code">
+<span class="srcline"><span class="lineno"><a href="30,25" id="srcline25">25</a></span><span class="line">        <span class="keyword">function</span> Output = process(plugin, in)</span></span>
+<span class="srcline"><span class="lineno"><a href="30,26" id="srcline26">26</a></span><span class="line">            [sig, ~] = plugin.preamp.process(in*plugin.Gain);</span></span>
+<span class="srcline"><span class="lineno"><a href="30,27" id="srcline27">27</a></span><span class="line">            Output = sig*plugin.Out;</span></span>
+<span class="srcline"><span class="lineno"><a href="30,28" id="srcline28">28</a></span><span class="line">            <span class="comment">%Output = in*plugin.Out;</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,29" id="srcline29">29</a></span><span class="line">        <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,30" id="srcline30">30</a></span><span class="line">        <span class="keyword">function</span> reset(plugin)</span></span>
+<span class="srcline"><span class="lineno"><a href="30,31" id="srcline31">31</a></span><span class="line">            plugin.preamp = preampModel(plugin.getSampleRate);</span></span>
+<span class="srcline"><span class="lineno"><a href="30,32" id="srcline32">32</a></span><span class="line">        <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,33" id="srcline33">33</a></span><span class="line">        <span class="keyword">function</span> set.Gain(plugin, val)</span></span>
+<span class="srcline"><span class="lineno"><a href="30,34" id="srcline34">34</a></span><span class="line">            plugin.Gain = val;</span></span>
+<span class="srcline"><span class="lineno"><a href="30,35" id="srcline35">35</a></span><span class="line">        <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,36" id="srcline36">36</a></span><span class="line">        <span class="keyword">function</span> set.Out(plugin, val)</span></span>
+<span class="srcline"><span class="lineno"><a href="30,37" id="srcline37">37</a></span><span class="line">            plugin.Out = val;</span></span>
+<span class="srcline"><span class="lineno"><a href="30,38" id="srcline38">38</a></span><span class="line">        <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,39" id="srcline39">39</a></span><span class="line">    <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,40" id="srcline40">40</a></span><span class="line"><span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="30,41" id="srcline41">41</a></span><span class="line"> </span></span>
+</pre>
+</div>

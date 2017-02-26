@@ -1,0 +1,465 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Code Generation Report</title>
+<link rel="stylesheet" type="text/css" href="resources/eml_report.css" />
+<link rel="stylesheet" type="text/css" href="resources/jQuery/ui.resizable.css" />
+<link rel="stylesheet" type="text/css" href="index.css" />
+<style>
+	pre.code{
+		-moz-tab-size: 4; /* For Firefox */
+		-o-tab-size: 4; /* For Opera 10.6-12.1 */
+		tab-size: 4; /* For Chrome */
+	}
+</style>
+<script type="text/javascript" src="resources/jQuery/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="resources/jQuery/jquery-ui-1.7.custom.min.js"></script>
+<script type="text/javascript" src="resources/jQuery/jquery.tablesorter.mod.js"></script>
+<script type="text/javascript" src="resources/jQuery/jquery.hotkeys-0.7.8.js"></script>
+<script type="text/javascript" src="resources/eml_report_interactions.js"></script>
+<script type="text/javascript" src="resources/eml_report_layout.js"></script>
+<script type="text/javascript" src="rtwshrink.js"></script>
+<script type="text/javascript">
+var localizedMessages = {
+    callSelectPrompt: "Select a function call:",
+    callSelectSource: "Calls from this function",
+    callSelectTarget: "Calls to this function",
+    infoForExpression: "Information for the selected expression:",
+    infoForVarType: "Information for the selected variable:",
+    infoForVarConst: "Information for the selected compile-time constant:",
+    infoForVarNone: "This variable does not have information associated with it.",
+    infoForFilter: "Matched {0}/{1} functions, {2}/{3} methods",
+    autoExtrinsicCall: "Only supported within the MATLAB environment."
+};
+var keyBindings = {
+        selectMCodeTab: "Ctrl+m",
+    selectCallStackTab: "Ctrl+k",
+        selectCCodeTab: "Ctrl+c",
+       selectReportTab: "Ctrl+r",
+     selectCenterPanel: "Ctrl+w",
+      selectSummaryTab: "Ctrl+s",
+     selectMessagesTab: "Ctrl+a",
+    selectWatchListTab: "Ctrl+v",
+     selectBuildLogTab: "Ctrl+t",
+    clearAllHighlights: "Esc"
+};
+var functionInfoTable = {
+ MATLABcode1: "resetCImpl1_mcode.html",
+ fpath1: "/private/tmp/tpdb963b10_7a4a_4383_a314_9d8f86153908/resetCImpl.m",
+ lines1: [1, 1, 9],
+ watch1: "resetCImpl1_watch.html",
+ title1: "Function: <span class='functionname'><a title='/private/tmp/tpdb963b10_7a4a_4383_a314_9d8f86153908/resetCImpl.m' class='functionlink' href=\"matlab: open('/private/tmp/tpdb963b10_7a4a_4383_a314_9d8f86153908/resetCImpl.m')\">resetCImpl</a></span>",
+ tcall1: [  ],
+ scall1: [ [ "From line 3 to getPluginInstance", "2#srcline1" ] ],
+ MATLABcode2: "getPluginInstance2_mcode.html",
+ fpath2: "/private/tmp/tpdb963b10_7a4a_4383_a314_9d8f86153908/getPluginInstance.m",
+ lines2: [1, 1, 10],
+ watch2: "getPluginInstance2_watch.html",
+ title2: "Function: <span class='functionname'><a title='/private/tmp/tpdb963b10_7a4a_4383_a314_9d8f86153908/getPluginInstance.m' class='functionlink' href=\"matlab: open('/private/tmp/tpdb963b10_7a4a_4383_a314_9d8f86153908/getPluginInstance.m')\">getPluginInstance</a></span>",
+ tcall2: [ [ "From resetCImpl line 3", "1#F2N4:B15" ] ],
+ scall2: [ [ "From line 6 to derivedAudioPlugin", "3#srcline3" ] ],
+ MATLABcode3: "derivedAudioPlugin3_mcode.html",
+ fpath3: "/private/tmp/tpdb963b10_7a4a_4383_a314_9d8f86153908/derivedAudioPlugin.m",
+ lines3: [3, 3, 8],
+ watch3: "derivedAudioPlugin3_watch.html",
+ title3: "Method: <span class='functionname'><a title='/private/tmp/tpdb963b10_7a4a_4383_a314_9d8f86153908/derivedAudioPlugin.m' class='functionlink' href=\"matlab: open('/private/tmp/tpdb963b10_7a4a_4383_a314_9d8f86153908/derivedAudioPlugin.m')\">derivedAudioPlugin</a></span>",
+ tcall3: [ [ "From getPluginInstance line 6", "2#F3N3:B30" ] ],
+ scall3: [ [ "From line 5 to preampPlugin", "4#srcline22" ] ],
+ MATLABcode4: "preampPlugin4_mcode.html",
+ fpath4: "/Users/nikolajandersson/Documents/MATLAB/git/NodalDKFramework/preampPlugin.m",
+ lines4: [22, 22, 25],
+ watch4: "preampPlugin4_watch.html",
+ title4: "Method: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/NodalDKFramework/preampPlugin.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/NodalDKFramework/preampPlugin.m')\">preampPlugin</a></span>",
+ tcall4: [ [ "From derivedAudioPlugin line 5", "3#F4N6:B17" ] ],
+ scall4: [ [ "From line 23 to preampModel", "9#srcline31" ] ],
+ MATLABcode9: "preampModel9_mcode.html",
+ fpath9: "/Users/nikolajandersson/Documents/MATLAB/git/NodalDKFramework/preampModel.m",
+ lines9: [31, 31, 37],
+ watch9: "preampModel9_watch.html",
+ title9: "Method: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/NodalDKFramework/preampModel.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/NodalDKFramework/preampModel.m')\">preampModel</a></span>",
+ tcall9: [ [ "From preampPlugin line 23", "4#F9N5:B66" ] ],
+ scall9: [ [ "From line 31 to DKmodel", "10#srcline0" ] ],
+ MATLABcode10: "DKmodel10_mcode.html",
+ fpath10: "/Users/nikolajandersson/Documents/MATLAB/git/NodalDKFramework/DKmodel.m",
+ lines10: [0, 0, 0],
+ watch10: "DKmodel10_watch.html",
+ title10: "Method: <span class='functionname'><a title='/Users/nikolajandersson/Documents/MATLAB/git/NodalDKFramework/DKmodel.m' class='functionlink' href=\"matlab: open('/Users/nikolajandersson/Documents/MATLAB/git/NodalDKFramework/DKmodel.m')\">DKmodel</a></span>",
+ tcall10: [ [ "From preampModel line 31", "9#srcline31" ] ],
+ scall10: [  ],
+ rootFcnID: "1",
+ firstPage: "1",
+ htmlRoot: "/Users/nikolajandersson/Documents/MATLAB/git/NodalDKFramework/audioplugin/dll/preampPlugin/html/"
+};
+var scriptInfoTable = {
+ fpath1: "/private/tmp/tpdb963b10_7a4a_4383_a314_9d8f86153908/resetCImpl.m",
+ fpath2: "/private/tmp/tpdb963b10_7a4a_4383_a314_9d8f86153908/getPluginInstance.m",
+ fpath3: "/private/tmp/tpdb963b10_7a4a_4383_a314_9d8f86153908/derivedAudioPlugin.m",
+ fpath4: "/Users/nikolajandersson/Documents/MATLAB/git/NodalDKFramework/preampPlugin.m",
+ fpath5: "/Applications/MATLAB_R2016b.app/toolbox/audio/audio/compiled/audioPlugin.p",
+ fpath6: "/Applications/MATLAB_R2016b.app/toolbox/coder/coder/+coder/+internal/matlabCodegenHandle.p",
+ fpath7: "/Users/nikolajandersson/Documents/MATLAB/git/NodalDKFramework/preampModel.m",
+ fpath8: "/Users/nikolajandersson/Documents/MATLAB/git/NodalDKFramework/DKmodel.m",
+ fpath9: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/ops/mrdivide.p",
+ fpath10: "/Applications/MATLAB_R2016b.app/toolbox/eml/lib/matlab/ops/rdivide.m",
+ fpath11: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/isBuiltInNumeric.m",
+ fpath12: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/scalexpCompatible.m",
+ fpath13: "/Applications/MATLAB_R2016b.app/toolbox/eml/eml/+coder/+internal/div.m"
+};
+</script>
+</head>
+<body>
+
+<div class="west">
+<ul class="ui-tabs-nav">
+<li class="ui-tabs-nav-item ui-tabs-selected"><span class="tab-link" id="MATLABcode"><span>MATLAB code</span></span></li>
+<li class="ui-tabs-nav-item"><span class="tab-link" id="callstack"><span>Call stack</span></span></li>
+<li class="ui-tabs-nav-item"><span class="tab-link" id="ccode"><span>C code</span></span></li>
+</ul>
+<div id="MATLABcodebody" class="ui-tabs-panel">
+<!-- Begin Filter -->
+<div class="grayline methodset" onclick="filterClick(event);">
+<a class="collapsed">Filter</a>
+</div>
+<div id="filterbody" class="hidden">
+<table class="myfunc-filter-tbl">
+<tr>
+<td title="Use this filter to display only functions and methods that contain variables or expressions with the specified attributes." colspan="2" class="checkbox">
+<div class="myfunc-filterby-chk"><input type="checkbox" class="filterenable" />
+<div class="filter-enable-lbl">Filter functions and methods</div></div></td></tr><tr>
+<td class="label"><div class="myfunc-filterby-lbl">Filter by:</div></td>
+<td class="select">
+<div class="filters">
+<select class="myfunc-filterby">
+<option id="size">Size</option>
+<option id="complex">Complexity</option>
+<option id="class">Class</option>
+</select>
+</div>
+</td>
+</tr>
+
+<tr>
+<td class="label"><div class="myfunc-filterstr-lbl">Filter:</div></td>
+<td class="input"><div>
+
+<div class="size">
+<select class="myfunc-filter size">
+<option value="2 3">1 x 0</option>
+<option value="3 4 9">1 x 1</option>
+</select>
+</div>
+
+<div class="complex">
+<select class="myfunc-filter complex">
+<option value="">Complex values</option>
+<option value="4 9">Real values</option>
+</select>
+</div>
+<!-- Begin Class Filter -->
+<div class="class">
+<select class="myfunc-filter class">
+<option value="2 3">cell</option>
+<option value="3 4">derivedAudioPlugin</option>
+<option value="4 9">double</option>
+<option value="4">logical</option>
+<option value="9">preampModel</option>
+<option value="4">uint64</option>
+</select>
+</div>
+<!-- End Class Filter -->
+</div>
+</td>
+</tr>
+</table>
+<div class="myfunc-count"></div>
+</div>
+<!-- End Filter -->
+<div class="grayline methodset" onmouseover="callTreeMouseOver(event);" onmouseout="callTreeMouseOut(event);" onclick="functionSetClick(event);">
+<a class="expanded">Functions</a>
+</div>
+<!-- Begin Function Tree -->
+<div id="functiontreebody">
+<div class="functionwrapper" onmouseover="callTreeMouseOver(event);" onmouseout="callTreeMouseOut(event);" onclick="functionTreeClick(event);">
+<ol class="tree">
+<!-- Begin Function Tree Roots -->
+<li class="leaf  failed"><a href="#" class="fcn  ED4 ED5 " id="F2N4:F1">getPluginInstance</a></li>
+<li class="leaf  failed"><a href="#" class="fcn  ED1 ED2 ED3 " id="F1N7:F2">resetCImpl</a></li>
+<!-- End Function Tree Roots -->
+</ol>
+<!-- Function Tree Nodes -->
+<div class="functiontreenodes hidden">
+</div>
+<!-- End Function Tree Nodes -->
+</div>
+</div>
+<!-- End Function Tree -->
+<!-- Begin Class Tree -->
+<div class="grayline methodset" onmouseover="callTreeMouseOver(event);" onmouseout="callTreeMouseOut(event);" onclick="methodSetClick(event);">
+<a class="expanded">Classes</a>
+</div>
+<div id="classlistbody">
+<div class="classwrapper" onmouseover="callTreeMouseOver(event);" onmouseout="callTreeMouseOut(event);" onclick="classTreeClick(event);">
+<ol class="tree">
+<!-- Begin Class Tree Roots -->
+<li class="node collapsed passed"><a class="classroot" id="F10N2:M5" title="DKmodel">DKmodel</a></li>
+<li class="node collapsed failed"><a class="classroot" id="F3N3:M6" title="derivedAudioPlugin">derivedAudioPlugin</a></li>
+<li class="node collapsed failed"><a class="classroot" id="F9N5:M7" title="preampModel">preampModel</a></li>
+<li class="node collapsed failed"><a class="classroot" id="F4N6:M8" title="preampPlugin">preampPlugin</a></li>
+<!-- End Class Tree Roots -->
+</ol>
+<!-- Class Tree Nodes -->
+<div class="classlistnodes hidden">
+<ol class="callstacknode" id="callstacknode3">
+<li class="node collapsed"><a>derivedAudioPlugin</a>
+<ul>
+<li class="leaf failed"><a href="#" class="fcn " id="F3N3:m2" title="derivedAudioPlugin.derivedAudioPlugin">derivedAudioPlugin</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode4">
+<li class="node collapsed"><a>preampPlugin</a>
+<ul>
+<li class="leaf failed"><a href="#" class="fcn " id="F4N6:m4" title="preampPlugin.preampPlugin">preampPlugin</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode9">
+<li class="node collapsed"><a>preampModel</a>
+<ul>
+<li class="leaf failed"><a href="#" class="fcn " id="F9N5:m3" title="preampModel.preampModel">preampModel</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode10">
+<li class="node collapsed"><a>DKmodel</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F10N2:m1" title="DKmodel.DKmodel"><span class="default">DKmodel</span></a></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- End Class Tree -->
+</div>
+<!-- Begin Call Tree -->
+<div id="callstackbody" class="ui-tabs-panel hidden">
+<div class="treewrapper" onmouseover="callTreeMouseOver(event);" onmouseout="callTreeMouseOut(event);" onclick="callTreeClick(event);">
+<ol class="tree">
+<!-- Call Tree Root -->
+<li class="node collapsed failed"><a href="#" class="fcn " id="F1N7:L1">resetCImpl</a>
+<ul>
+<li class="node collapsed failed"><a href="#" class="fcn " id="F2N4:L2">getPluginInstance</a></li>
+</ul>
+</li>
+</ol>
+<!-- Call Tree Nodes -->
+<div class="callstacknodes hidden">
+<ol class="callstacknode" id="callstacknode1">
+
+<li class="node collapsed failed"><a href="#" class="fcn " id="F1N7:l1">resetCImpl</a>
+<ul>
+<li class="node collapsed failed"><a href="#" class="fcn " id="F2N4:l2">getPluginInstance</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode2">
+
+<li class="node collapsed failed"><a href="#" class="fcn " id="F2N4:l3">getPluginInstance</a>
+<ul>
+<li class="node collapsed failed"><a href="#" class="fcn " id="F3N3:l4" title="derivedAudioPlugin.derivedAudioPlugin">derivedAudioPlugin</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode3">
+
+<li class="node collapsed failed"><a href="#" class="fcn " id="F3N3:l5" title="derivedAudioPlugin.derivedAudioPlugin">derivedAudioPlugin</a>
+<ul>
+<li class="node collapsed failed"><a href="#" class="fcn " id="F4N6:l6" title="preampPlugin.preampPlugin">preampPlugin</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode4">
+
+<li class="node collapsed failed"><a href="#" class="fcn " id="F4N6:l7" title="preampPlugin.preampPlugin">preampPlugin</a>
+<ul>
+<li class="node collapsed failed"><a href="#" class="fcn " id="F9N5:l8" title="preampModel.preampModel">preampModel</a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode9">
+
+<li class="node collapsed failed"><a href="#" class="fcn " id="F9N5:l9" title="preampModel.preampModel">preampModel</a>
+<ul>
+<li class="leaf passed"><a href="#" class="fcn " id="F10N2:l10" title="DKmodel.DKmodel"><span class="default">DKmodel</span></a></li>
+</ul>
+</li>
+</ol>
+<ol class="callstacknode" id="callstacknode10">
+
+<li class="leaf passed"><a href="#" class="fcn " id="F10N2:l11" title="DKmodel.DKmodel"><span class="default">DKmodel</span></a>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<!-- End Call Tree -->
+<!-- Begin C Code -->
+<div id="ccodebody" class="ui-tabs-panel hidden">
+</div>
+<!-- End C Code -->
+</div>
+<!-- Tooltips -->
+<div class="aux hidden">
+<div class="tooltips">
+<div class="tooltip" id="TT1"><table class="tooltip"><tr><th>Size</th><td>1 x 0</td></tr><tr><th>Class</th><td>cell</td></tr></table></div>
+<div class="tooltip" id="TT2"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>logical</td></tr></table></div>
+<div class="tooltip" id="TT3"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>derivedAudioPlugin</td></tr></table></div>
+<div class="tooltip" id="TT4"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>derivedAudioPlugin</td></tr></table></div>
+<div class="tooltip" id="TT5"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>derivedAudioPlugin</td></tr></table></div>
+<div class="tooltip" id="TT6"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>double</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT7"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>uint64</td></tr><tr><th>Complex</th><td>No</td></tr></table></div>
+<div class="tooltip" id="TT8"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>preampModel</td></tr></table></div>
+<div class="tooltip" id="TT9"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>preampModel</td></tr></table></div>
+<div class="tooltip" id="TT10"><table class="tooltip"><tr><th>Size</th><td>1 x 1</td></tr><tr><th>Class</th><td>preampModel</td></tr></table></div>
+</div>
+</div>
+<!-- End Tooltips -->
+
+<div class="south">
+<ul class="ui-tabs-nav">
+<li class="ui-tabs-nav-item"><span class="tab-link" id="summary"><span>Summary</span></span></li>
+<li class="ui-tabs-nav-item ui-tabs-selected"><span class="tab-link" id="messages"><span>All Messages (9)</span></span></li>
+<li class="ui-tabs-nav-item"><span class="tab-link" id="watchlist"><span>Variables</span></span></li>
+<li class="ui-tabs-nav-item hidden"><span class="tab-link" id="watchload"><span>Variables</span></span></li>
+</ul>
+
+<!-- Compilation Summary -->
+<div id="summarybody" class="ui-tabs-panel hidden">
+<table cellpadding="1" cellspacing="4">
+<tr><td>MATLAB code generation attempted on:</td><td>24-Feb-2017 16:24:04</td></tr>
+<tr><td>Coding target:</td><td>Dynamic Library</td></tr>
+<tr><td>Number of errors:</td><td><a href="javascript:selectMessagesTab();">9</a></td></tr>
+<tr><td>Number of warnings:</td><td><a href="javascript:selectMessagesTab();">0</a></td></tr>
+<tr><td>Number of notices:</td><td><a href="javascript:selectMessagesTab();">0</a></td></tr>
+</table>
+<p/><p/><table>
+<tr><td><b>Tell Us What You Think</b></td></tr>
+<tr><td>We value your feedback. Please take a few minutes to answer this short questionnaire regarding the Code Generation Report.</td></tr>
+<tr><td><a href="matlab: emlcprivate('launchReportSurvey');">&gt;&gt;Provide Feedback</a></td></tr>
+</table>
+</div>
+
+<!-- Message Table -->
+<div id="messagesbody" class="ui-tabs-panel">
+<table class="grid" summary="This table lists the messages produced during code generation." cellspacing="0" cellpadding="6">
+<thead>
+<tr>
+<th id="msgorder" scope="col"><div class="d1"><div class="d2"><a href="#">Order</a></div></div></th>
+<th id="msgtype" scope="col"><div class="d1"><div class="d2"><a href="#">Type</a></div></div></th>
+<th id="function" scope="col"><div class="d1"><div class="d2"><a href="#">Function</a></div></div></th>
+<th id="location" scope="col"><div class="d1"><div class="d2"><a href="#">Line</a></div></div></th>
+<th id="text" scope="col"><div class="d1"><div class="d2"><a href="#">Description</a></div></div></th>
+</tr>
+</thead>
+<tbody onmouseover="messagesMouseOver(event);" onmouseout="messagesMouseOut(event);" onclick="messagesClick(event);">
+<tr class="message error" id="M8F9">
+<td class="msgorder" headers="msgorder"><a href="#">1</a></td>
+<td class="failed" headers="msgtype"></td>
+<td class="function" headers="function"><div>preampModel</div></td>
+<td class="location" headers="location"><div>33</div></td>
+<td class="text" headers="text"><div>Property 'components_def' has initial value of unsupported type. MATLAB class 'function_handle' found at 'components_def(1).model' is unsupported.</div></td>
+</tr>
+<tr class="message error" id="M9F9">
+<td class="msgorder" headers="msgorder"><a href="#">2</a></td>
+<td class="failed" headers="msgtype"></td>
+<td class="function" headers="function"><div>preampModel</div></td>
+<td class="location" headers="location"><div>34</div></td>
+<td class="text" headers="text"><div>Property 'components_def' has initial value of unsupported type. MATLAB class 'function_handle' found at 'components_def(1).model' is unsupported.</div></td>
+</tr>
+<tr class="message error" id="M7F4">
+<td class="msgorder" headers="msgorder"><a href="#">3</a></td>
+<td class="failed" headers="msgtype"></td>
+<td class="function" headers="function"><div>preampPlugin</div></td>
+<td class="location" headers="location"><div>23</div></td>
+<td class="text" headers="text"><div>Function call failed.</div></td>
+</tr>
+<tr class="message error" id="M6F3">
+<td class="msgorder" headers="msgorder"><a href="#">4</a></td>
+<td class="failed" headers="msgtype"></td>
+<td class="function" headers="function"><div>derivedAudioPlugin</div></td>
+<td class="location" headers="location"><div>5</div></td>
+<td class="text" headers="text"><div>Function call failed.</div></td>
+</tr>
+<tr class="message error" id="M4F2">
+<td class="msgorder" headers="msgorder"><a href="#">5</a></td>
+<td class="failed" headers="msgtype"></td>
+<td class="function" headers="function"><div>getPluginInstance</div></td>
+<td class="location" headers="location"><div>6</div></td>
+<td class="text" headers="text"><div>Function call failed.</div></td>
+</tr>
+<tr class="message error" id="M5F2">
+<td class="msgorder" headers="msgorder"><a href="#">6</a></td>
+<td class="failed" headers="msgtype"></td>
+<td class="function" headers="function"><div>getPluginInstance</div></td>
+<td class="location" headers="location"><div>8</div></td>
+<td class="text" headers="text"><div>Undefined function or variable 'plugin'. The first assignment to a local variable determines its class.</div></td>
+</tr>
+<tr class="message error" id="M1F1">
+<td class="msgorder" headers="msgorder"><a href="#">7</a></td>
+<td class="failed" headers="msgtype"></td>
+<td class="function" headers="function"><div>resetCImpl</div></td>
+<td class="location" headers="location"><div>3</div></td>
+<td class="text" headers="text"><div>Function call failed.</div></td>
+</tr>
+<tr class="message error" id="M2F1">
+<td class="msgorder" headers="msgorder"><a href="#">8</a></td>
+<td class="failed" headers="msgtype"></td>
+<td class="function" headers="function"><div>resetCImpl</div></td>
+<td class="location" headers="location"><div>5</div></td>
+<td class="text" headers="text"><div>Undefined function or variable 'plugin'. The first assignment to a local variable determines its class.</div></td>
+</tr>
+<tr class="message error" id="M3F1">
+<td class="msgorder" headers="msgorder"><a href="#">9</a></td>
+<td class="failed" headers="msgtype"></td>
+<td class="function" headers="function"><div>resetCImpl</div></td>
+<td class="location" headers="location"><div>7</div></td>
+<td class="text" headers="text"><div>Undefined function or variable 'plugin'. The first assignment to a local variable determines its class.</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Watchlist Table -->
+<div id="watchlistbody" class="ui-tabs-panel hidden">
+</div>
+<div id="watchloadbody" class="ui-tabs-panel hidden">
+Loading Variables table ...
+</div>
+
+</div>
+<!-- Begin MATLAB Code Panel -->
+<div class="center">
+<div class="center-title">
+<div class="ui-tabs-nav-item ui-tabs-selected">
+<span class="functiontitle">
+</span>
+<!-- Begin Call Sites -->
+<span id="callsiteselecttable" class="call-sites-tbl">
+<span id="callsiteselectlabel" class="filtered">Calls:</span>
+<select id="callsiteselect" onchange="callSiteChange(event)">
+<option value="callsiteprompt">Select a function call:</option>
+</select>
+</span>
+<!-- End Call Sites -->
+</div>
+</div>
+<div class="ui-tabs-panel">
+<div class="code" onmouseover="mcodeMouseOver(event);" onmouseout="mcodeMouseOut(event);"onclick="mcodeClick(event);">
+</div>
+</div>
+</div>
+<!-- End MATLAB Code Panel -->
+</body>
+</html>

@@ -1,0 +1,57 @@
+<div class="dead">
+<pre class="code">
+<span class="srcline"><span class="lineno"><a href="7,1" id="srcline1"> 1</a></span><span class="line"><span class="keyword">classdef</span> preampModel &lt; DKmodel</span></span>
+<span class="srcline"><span class="lineno"><a href="7,2" id="srcline2"> 2</a></span><span class="line">    </span></span>
+<span class="srcline"><span class="lineno"><a href="7,3" id="srcline3"> 3</a></span><span class="line">    <span class="keyword">properties</span>(Constant)</span></span>
+<span class="srcline"><span class="lineno"><a href="7,4" id="srcline4"> 4</a></span><span class="line">        components_def = [resistor(<span class="string">'R1'</span>,[2,3],68000),<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,5" id="srcline5"> 5</a></span><span class="line">            	resistor(<span class="string">'R2'</span>,[3,0],1000000),<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,6" id="srcline6"> 6</a></span><span class="line">            	resistor(<span class="string">'R3'</span>,[4,0],2700),<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,7" id="srcline7"> 7</a></span><span class="line">            	resistor(<span class="string">'R4'</span>,[5,6],100000),<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,8" id="srcline8"> 8</a></span><span class="line">            	resistor(<span class="string">'R5'</span>,[7,0],1000000),<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,9" id="srcline9"> 9</a></span><span class="line">                capacitor(<span class="string">'C1'</span>,[1,2],20e-9),<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,10" id="srcline10">10</a></span><span class="line">                capacitor(<span class="string">'C2'</span>,[4,0],680e-9),<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,11" id="srcline11">11</a></span><span class="line">            	capacitor(<span class="string">'C3'</span>,[5,7],20e-9),<span class="keyword">...</span><span class="comment"> </span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,12" id="srcline12">12</a></span><span class="line">                capacitor(<span class="string">'C4'</span>,[3,5],3e-12),<span class="keyword">...</span><span class="comment">       </span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,13" id="srcline13">13</a></span><span class="line">            	inputPort(<span class="string">'In'</span>,[1,0],0),<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,14" id="srcline14">14</a></span><span class="line">            	inputPort(<span class="string">'power'</span>,[6,0],300),<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,15" id="srcline15">15</a></span><span class="line">            	outputPort(<span class="string">'Out'</span>,[7,0]),<span class="keyword">...</span><span class="comment">    </span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,16" id="srcline16">16</a></span><span class="line">            	triode(<span class="string">'v1'</span>,[3,4;5,4],<span class="string">'ecc83'</span>)];</span></span>
+<span class="srcline"><span class="lineno"><a href="7,17" id="srcline17">17</a></span><span class="line">            </span></span>
+<span class="srcline"><span class="lineno"><a href="7,18" id="srcline18">18</a></span><span class="line">            </span></span>
+<span class="srcline"><span class="lineno"><a href="7,19" id="srcline19">19</a></span><span class="line">            </span></span>
+<span class="srcline"><span class="lineno"><a href="7,20" id="srcline20">20</a></span><span class="line">            components_count = struct(<span class="string">'numResistors'</span>, 5,<span class="string">'numCapacitors'</span>, 5,<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,21" id="srcline21">21</a></span><span class="line">                <span class="string">'numInputPorts'</span>, 2, <span class="string">'numOutputPorts'</span>, 1,<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,22" id="srcline22">22</a></span><span class="line">                <span class="string">'numNonlinearComponents'</span>,2, <span class="string">'numPotmeters'</span>, 0,<span class="keyword">...</span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,23" id="srcline23">23</a></span><span class="line">                <span class="string">'numNodes'</span>, 7, <span class="string">'numOPAs'</span>, 0);</span></span>
+<span class="srcline"><span class="lineno"><a href="7,24" id="srcline24">24</a></span><span class="line">    <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,25" id="srcline25">25</a></span><span class="line">    </span></span>
+<span class="srcline"><span class="lineno"><a href="7,26" id="srcline26">26</a></span><span class="line">    <span class="keyword">properties</span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,27" id="srcline27">27</a></span><span class="line">        nonlin_model;</span></span>
+<span class="srcline"><span class="lineno"><a href="7,28" id="srcline28">28</a></span><span class="line">    <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,29" id="srcline29">29</a></span><span class="line">    </span></span>
+<span class="srcline"><span class="lineno"><a href="7,30" id="srcline30">30</a></span><span class="line">    <span class="keyword">methods</span></span></span>
+</pre>
+</div>
+<pre class="code">
+<span class="srcline"><span class="lineno"><a href="7,31" id="srcline31">31</a></span><span class="line">        <span class="keyword">function</span> <span class="var type1" id="S13T9U146">obj</span> = <span class="mxinfo " id="T9:U2">preampModel</span>(<span class="var type1" id="S14T6U149">fs</span>)</span></span>
+<span class="srcline"><span class="lineno"><a href="7,32" id="srcline32">32</a></span><span class="line">           <span class="mxinfo " id="T6:U4"><span class="mxinfo " id="T6:U5"><span class="var type1" id="S13T9U153">obj</span>.T</span> = <span class="mxinfo " id="T6:U7"><span class="mxinfo " id="T6:U8">1</span>/<span class="var type1" id="S14T6U157">fs</span></span></span>;</span></span>
+<span class="srcline"><span class="lineno"><a href="7,33" id="srcline33">33</a></span><span class="line">           <span class="var type0" id="S13T0U161">obj</span>.nonlin_model = <span class="message error" id="M8F9C"><span class="var type1" id="S13T9U166">obj</span>.components_def</span>(13).model;</span></span>
+<span class="srcline"><span class="lineno"><a href="7,34" id="srcline34">34</a></span><span class="line">           <span class="var type0" id="S13T0U172">obj</span> = buildModel(<span class="var type1" id="S13T9U175">obj</span>, <span class="message error" id="M9F9C"><span class="var type1" id="S13T9U177">obj</span>.components_def</span>,<span class="var type0" id="S13T0U180">obj</span>.components_count);</span></span>
+<span class="srcline"><span class="lineno"><a href="7,35" id="srcline35">35</a></span><span class="line">        <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,36" id="srcline36">36</a></span><span class="line"> </span></span>
+</pre>
+<div class="dead">
+<pre class="code">
+<span class="srcline"><span class="lineno"><a href="7,37" id="srcline37">37</a></span><span class="line">        <span class="keyword">function</span> obj = load_input(obj,in)        </span></span>
+<span class="srcline"><span class="lineno"><a href="7,38" id="srcline38">38</a></span><span class="line">               obj.U(1) = in; <span class="comment">% loads the input signal sample given by in into inputs vector U</span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,39" id="srcline39">39</a></span><span class="line">           <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,40" id="srcline40">40</a></span><span class="line">                  </span></span>
+<span class="srcline"><span class="lineno"><a href="7,41" id="srcline41">41</a></span><span class="line">        <span class="keyword">function</span> [i, J] = nonlinearity(obj,v)</span></span>
+<span class="srcline"><span class="lineno"><a href="7,42" id="srcline42">42</a></span><span class="line">            [i,J] = obj.nonlin_model(v);</span></span>
+<span class="srcline"><span class="lineno"><a href="7,43" id="srcline43">43</a></span><span class="line">        <span class="keyword">end</span>     </span></span>
+<span class="srcline"><span class="lineno"><a href="7,44" id="srcline44">44</a></span><span class="line">  </span></span>
+<span class="srcline"><span class="lineno"><a href="7,45" id="srcline45">45</a></span><span class="line">    <span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,46" id="srcline46">46</a></span><span class="line"><span class="keyword">end</span></span></span>
+<span class="srcline"><span class="lineno"><a href="7,47" id="srcline47">47</a></span><span class="line"> </span></span>
+</pre>
+</div>
